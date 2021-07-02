@@ -1,0 +1,30 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dutch treated : @ViewBag.Tittle </title>
+
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <header>Welcome to my site</header>
+    <h2> @ViewBag.Tittle</h2>
+
+    <menu>
+        <ul>
+            <li><a asp-controller="App" asp-action="Index">Home</a></li>
+            <li><a asp-controller="App" asp-action="Shop">Shop</a></li>
+            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+            <li><a asp-controller="App" asp-action="About">About</a></li>
+
+        </ul>
+    </menu>
+    @RenderBody()
+    <footer>Copyright 2021 Suleman LLC</footer>
+    <script src="~/js/index.js"></script>
+
+
+    @RenderSection("Scripts", false)
+</body>
+</html>
