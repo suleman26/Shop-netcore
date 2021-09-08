@@ -1,5 +1,7 @@
-﻿using DutchTreat.Data.Entities;
+﻿using dutch_retreat.Data.Entities;
+using DutchTreat.Data.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -15,16 +17,31 @@ namespace dutch_retreat.Data
     {
         private readonly DutchContext _ctx;
         private readonly IWebHostEnvironment _env;
+        private readonly UserManager<StoreUser> _userManager;
 
-        public DutchSeeder(DutchContext ctx, IWebHostEnvironment env)
+        public DutchSeeder(DutchContext ctx, IWebHostEnvironment env, UserManager<StoreUser> userManager)
         {
             _ctx = ctx;
             _env = env;
+            _userManager = userManager;
         }
 
         public void Seed()
         {
-            _ctx.Database.EnsureCreated(); 
+            _ctx.Database.EnsureCreated();
+
+            StoreUser user = new StoreUser()
+            {
+                FirstName = "Suleman",
+                LastName = "Sani",
+                Email = "sulemansani26@gmail.com",
+                UserName = "sulemansani26@gmail.com",
+            };
+
+            var result = _userManager.CreateAsync(user, "P7hgssw0rd123");
+
+       
+
             if (!_ctx.Products.Any())
             {
                 var filePath = Path.Combine(_env.ContentRootPath, "Data/art.json");
@@ -49,7 +66,7 @@ namespace dutch_retreat.Data
                 };
                 
             }
-            _ctx.SaveChanges();
+           
         }
     }
 }

@@ -59,7 +59,7 @@ namespace dutch_retreat.Controllers
             }
            
         }
-
+      
         [HttpPost]
         public IActionResult Post([FromBody]OrderModelView model)
         {
@@ -86,13 +86,8 @@ namespace dutch_retreat.Controllers
                 }
             }
 
-                return BadRequest(ModelState);
-           
-           
-           
+                return BadRequest(ModelState);              
         }
-
-
 
     }
 }

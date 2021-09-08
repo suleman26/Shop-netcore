@@ -60,6 +60,7 @@ namespace dutch_retreat.Controllers
 
         public IActionResult Shop()
         {
+            ViewBag.Tittle = "NAIJA SHOP";
             var result = _repository.GetAllProducts();
             return View(result);
         }   

@@ -14,12 +14,12 @@ namespace dutch_retreat.Data
         private readonly DutchContext _ctx;
         private readonly ILogger<DutchRepository> _logger;
 
+
         public DutchRepository(DutchContext ctx, ILogger<DutchRepository> logger)
         {
             _ctx = ctx;
             _logger = logger;
         }
-
         public void AddEntity(object model)
         {
             _ctx.Add(model);
@@ -51,8 +51,7 @@ namespace dutch_retreat.Data
                 _logger.LogError($"Unable to get all orders: {ex}");
                 return null;
 
-            }
-           
+            }         
         }
 
         public IEnumerable<Product> GetAllProducts()
@@ -60,14 +59,15 @@ namespace dutch_retreat.Data
             try
             {
                 _logger.LogInformation("GetAllProducts method called");
-                return _ctx.Products
-                    .OrderBy(p => p.Title)
-                    .ToList();
+                return _ctx.Products.FromSqlRaw("select * from products").ToList();
+               // return _ctx.Products
+               //     .OrderBy(p => p.Title)
+                 //   .ToList();
             }
             catch (Exception ex)
-            { 
+            {  
                 _logger.LogError($"Unable to get products: {ex}");
-                return null;
+                return null;  
             }
         }
 

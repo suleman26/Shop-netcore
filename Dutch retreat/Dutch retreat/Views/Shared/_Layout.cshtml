@@ -2,26 +2,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dutch treated : @ViewBag.Tittle </title>
-
+    <title>Naija Shop : @ViewBag.Tittle </title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
 </head>
 <body>
-    <header>Welcome to my site</header>
-    <h2> @ViewBag.Tittle</h2>
+    <header></header>
+    <div class="container">
+        <div>
+           
 
-    <menu>
-        <ul>
-            <li><a asp-controller="App" asp-action="Index">Home</a></li>
-            <li><a asp-controller="App" asp-action="Shop">Shop</a></li>
-            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-            <li><a asp-controller="App" asp-action="About">About</a></li>
+            <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+                <h2 class="navbar-brand">  Welcome to Naija Shop</h2>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="menu" class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link" asp-controller="App" asp-action="Index">Home</a></li>
+                        <li class="nav-item">
+                        <a class="nav-link" asp-controller="App" asp-action="Shop">Shop</a></li>
+                        <li class="nav-item">
+                        <a class="nav-link" asp-controller="App" asp-action="Contact">Contact</a></li>
+                        <li class="nav-item">
+                        <a class="nav-link" asp-controller="App" asp-action="About">About</a></li>
 
-        </ul>
-    </menu>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
     @RenderBody()
     <footer>Copyright 2021 Suleman LLC</footer>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/js/index.js"></script>
 
 
